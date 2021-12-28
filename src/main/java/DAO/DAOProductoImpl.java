@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 
 public class DAOProductoImpl extends Conexion implements DAOProducto {
 
-
     public void registrar(Producto pro) throws Exception {
         try{
             this.Conectar();
