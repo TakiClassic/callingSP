@@ -7,6 +7,7 @@ package interfaces;
 
 import DAO.Conexion;
 import DAO.DAOProductoImpl;
+import com.poi.Producto;
 import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,28 +1,12 @@
 package DAO;
 
-import interfaces.Producto;
+import com.poi.Producto;
 import interfaces.DAOProducto;
 import java.sql.PreparedStatement;
 
 
 public class DAOProductoImpl extends Conexion implements DAOProducto {
 
-    public void registrar(Producto pro) throws Exception {
-        try{
-            this.Conectar();
-            PreparedStatement st = this.conexion.prepareStatement("{call UPS_CREAR_PRODUCTOS (?,?,?,?)}");
-            st.setString(1, pro.getName());
-            st.setString(2, pro.getState());
-            st.setInt(3, pro.getPrice());
-            st.setInt(4, pro.getMarca());
-            st.executeUpdate();
-        }catch(Exception e){
-            System.out.println("Error: " + " " + e);
-            throw e;
-        }finally{
-            this.cerrar();
-        }
-    }
 
   public void listar(Producto pro) throws Exception {
     try{
@@ -69,22 +53,20 @@ public class DAOProductoImpl extends Conexion implements DAOProducto {
 
     @Override
     public void registrar(com.poi.Producto pro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void listar(com.poi.Producto pro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void modificar(com.poi.Producto pro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void eliminar(com.poi.Producto pro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            this.Conectar();
+            PreparedStatement st = this.conexion.prepareStatement("{call UPS_CREAR_PRODUCTOS (?,?,?,?)}");
+            st.setString(1, pro.getName());
+            st.setString(2, pro.getState());
+            st.setInt(3, pro.getPrice());
+            st.setInt(4, pro.getMarca());
+            st.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Error: " + " " + e);
+            throw e;
+        }finally{
+            this.cerrar();
+        }
     }
     
 }

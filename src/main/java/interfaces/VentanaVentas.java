@@ -80,7 +80,7 @@ public class VentanaVentas extends javax.swing.JFrame {
             Conexion conn = new Conexion();
             Connection cnt = conn.Conectar();
 
-            String sql = "call USP_READ_ALL_VENTAS";
+            String sql = "select ventas.id,ventas.fecha,productos.nombre from ventas join productos on ventas.producto=productos.id;";
 
             ps = cnt.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -354,7 +354,6 @@ public class VentanaVentas extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-        datosP();
         txtIdProducto.setText(null);
         txtIdProducto.setText(null);
         datosV();

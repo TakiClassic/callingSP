@@ -1,6 +1,6 @@
 package com.poi;
 
-import interfaces.Producto;
+//import com.poi.Producto;
 import DAO.DAOProductoImpl;
 import interfaces.DAOProducto;
 import DAO.Conexion;

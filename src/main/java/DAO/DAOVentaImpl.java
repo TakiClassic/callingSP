@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import com.poi.Venta;
@@ -15,7 +10,7 @@ public class DAOVentaImpl extends Conexion implements DAOVenta{
     
         try{
             this.Conectar();
-            PreparedStatement st = this.conexion.prepareStatement("{call UPS_CrearVenta (?)}");
+            PreparedStatement st = this.conexion.prepareStatement("{call USP_CrearVenta (?)}");
             st.setString(1, ven.getDate());
             st.executeUpdate();
         }catch(Exception e){
@@ -47,7 +42,7 @@ public class DAOVentaImpl extends Conexion implements DAOVenta{
     
         try{
             this.Conectar();
-            PreparedStatement st = this.conexion.prepareStatement("{call UPS_ACTUALIZAR_MARCAS (?,?,?)}");
+            PreparedStatement st = this.conexion.prepareStatement("{call USP_ACTUALIZAR_MARCAS (?,?,?)}");
             st.setString(1, ven.getDate());
             st.setInt(2, ven.getProd());
             st.setInt(3, ven.getId());
@@ -64,7 +59,7 @@ public class DAOVentaImpl extends Conexion implements DAOVenta{
     public void eliminar(Venta ven) throws Exception {
         try{
             this.Conectar();
-            PreparedStatement st = this.conexion.prepareStatement("{call UPS_DELETE_VENTAS (?)}");
+            PreparedStatement st = this.conexion.prepareStatement("{call USP_DELETE_VENTAS (?)}");
             st.setInt(1, ven.getId());
             st.executeUpdate();
         }catch(Exception e){
